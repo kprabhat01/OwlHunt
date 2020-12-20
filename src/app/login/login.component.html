@@ -1,0 +1,39 @@
+<main id="main">
+
+
+    <section id="clients" class="section-bg">
+
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-header top-margin">
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <div class="card" style="width:400px">
+                    <div class="card-header bg-info text-white text-center">
+                        Member Login
+                    </div>
+                    <div class="card-body text-right">
+                        <form [formGroup]="authForms" (ngSubmit)="onSubmit()">
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Enter email address"
+                                    formControlName="email">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Enter password"
+                                    formControlName="passwd">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary"
+                                [disabled]="!this.authForms.valid">SignIn</button>
+                        </form>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <button class="btn btn-link" [routerLink]="['/signup']">Register Now </button>                         
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End Clients Section -->
+</main>
