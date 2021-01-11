@@ -1,0 +1,6 @@
+<table class="table table-condenced" *ngIf="userDetails">
+    <tr *ngFor="let user of userDetails">
+        <td>{{user.first_name}}, {{user.last_name}}</td>
+        <td class="text-right"><button class="btn btn-sm btn-success" (click)="assignUser(user.id)">Assign</button></td>
+    </tr>
+</table>

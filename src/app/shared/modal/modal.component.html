@@ -1,0 +1,13 @@
+<app-resume-file *ngIf="contentName && (contentName=='resumeUpload' || contentName=='resumeDownload')"
+    [showDownload]="contentName=='resumeDownload'?true:false"></app-resume-file>
+
+<app-resume-search *ngIf="contentName && contentName.includes('resumeSearch')" [resumeSearchDetails]="contentName">
+</app-resume-search>
+
+<app-add-requisition *ngIf="contentName && contentName==='AddReq'"></app-add-requisition>
+
+<app-assign-requisition *ngIf="contentName && contentName.includes('AssignRequisition')" [searchUserId]="contentName">
+</app-assign-requisition>
+
+
+<app-add-user-self *ngIf="contentName && contentName==='AddUserSelf'"></app-add-user-self>

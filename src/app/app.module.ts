@@ -16,6 +16,14 @@ import { SignupComponent } from './signup/signup.component';
 import { HttpInterceptorService } from './api/http-interceptor.service';
 import { CountryComponent } from './shared/country/country.component';
 import { CompanyComponent } from './shared/company/company.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component';
+import { ModalComponent } from './shared/modal/modal.component';
+import { ResumeFileComponent } from './resume-file/resume-file.component';
+import { ResumeSearchComponent } from './resume-search/resume-search.component';
+import { AddRequisitionComponent } from './add-requisition/add-requisition.component';
+import { AssignRequisitionComponent } from './assign-requisition/assign-requisition.component';
+import { AddUserSelfComponent } from './add-user-self/add-user-self.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +34,15 @@ import { CompanyComponent } from './shared/company/company.component';
     LoginComponent,
     SignupComponent,
     CountryComponent,
-    CompanyComponent
+    CompanyComponent,
+    DashboardComponent,
+    DashboardHomeComponent,
+    ModalComponent,
+    ResumeFileComponent,
+    ResumeSearchComponent,
+    AddRequisitionComponent,
+    AssignRequisitionComponent,
+    AddUserSelfComponent
   ],
   imports: [
     BrowserModule,

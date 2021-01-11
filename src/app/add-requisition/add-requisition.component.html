@@ -1,0 +1,31 @@
+<form [formGroup]="reqForm" (ngSubmit)="SubmitReq()">
+    <div class="form-group">
+        Name <label class="text-danger">*</label>
+        <input type="text" class="form-control" formControlName="Req_name">
+    </div>
+    <div class="form-group">
+        Roles <label class="text-danger">*</label>
+        <input type="text" class="form-control" formControlName="Req_roles">
+    </div>
+    <div class="form-group">
+        Duties <label class="text-danger">*</label>
+        <input type="text" class="form-control" formControlName="req_duties">
+    </div>
+    <div class="form-group">
+        Min-Exp. <label class="text-danger">*</label>
+        <input type="number" class="form-control" formControlName="req_max_exp">
+    </div>
+    <div class="form-group">
+        Max-Exp. <label class="text-danger">*</label>
+        <input type="number" class="form-control" formControlName="req_min_exp">
+    </div>
+    <div class="form-group">
+        Skills <label class="text-danger">*</label>
+        <input type="text" class="form-control" formControlName="req_skills">
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary" [disabled]="!this.reqForm.valid">Submit</button>
+    </div>
+
+</form>

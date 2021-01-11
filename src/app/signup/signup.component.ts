@@ -34,7 +34,7 @@ export class SignupComponent implements OnInit {
   onSelectOfCountry(countryCode) {
     this.signUpForm.patchValue({ comp_country: countryCode });
   }
-  onConfirmPasswordEntered() { 
+  onConfirmPasswordEntered() {
     if (this.signUpForm.value["passwrd"] != this.signUpForm.value["confpasswrd"]) {
       this.notification.showError("Password does not match with confirm password!!");
     }
@@ -45,8 +45,6 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() {
-    debugger;
-
     this.signUpService.signUpUser(this.signUpForm.value);
   }
 

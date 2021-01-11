@@ -6,19 +6,24 @@ import { NotificationService } from '../services/notification.service';
 @Injectable({
   providedIn: 'root'
 })
-export class SignupService {
+export class ResumeServiceService {
 
   constructor(private http: HttpRequestService, private notification: NotificationService) { }
 
-  signUpUser(obj: any) {
-    this.http.post("register", obj).subscribe(p => {
+
+  uploadResume(obj: any) {
+
+    this.http.post('resume_upload', obj).subscribe(p => {
       if (p) {
-        this.notification.showSuccess("Information has been saved successfully");
+        this.notification.showSuccess('The information has been saved successfully');
       }
     }, err => {
-      console.log(err);
       this.notification.showError(err.statusText);
-    });
+    })
+  }
+
+  searchResume<resumeSearch>(obj: any) {
+    return this.http.post<resumeSearch>('resume_search', obj);
   }
 
 }

@@ -6,5 +6,8 @@ export interface credential {
 export interface authenticationResponse {
     Result: string;
     email: string;
-    user_id: number
+    user_id: number;
+    accessToken: string;
+    user_name: string;
+    role_id: number;
 }

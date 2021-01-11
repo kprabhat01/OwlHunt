@@ -1,0 +1,140 @@
+<div class="container-fluid">
+    <h1 class="mt-4">Dashboard</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Dashboard</li>
+    </ol>
+    <div class="row">
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-primary text-white mb-4">
+                <div class="card-body text-right">
+                    <h2>
+                        {{userRequisition.length}}
+                    </h2>
+                </div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <span class="small text-white stretched-link">
+                        <i class="fas fa-address-card"></i> Requisition</span>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+        <!--
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-warning text-white mb-4">
+                <div class="card-body">Warning Card</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="#">View Details</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-success text-white mb-4">
+                <div class="card-body">Success Card</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="#">View Details</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div> -->
+        <!--<div class="col-xl-3 col-md-6">
+            <div class="card bg-danger text-white mb-4">
+                <div class="card-body text-right">
+                    <h2>
+                        {{userRequisition.length}}
+                    </h2>
+                    
+                </div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <span class="small text-white stretched-link">
+                        <i class="fas fa-address-card"></i> Users</span>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>-->
+    </div>
+
+    <div class="card mb-4" *ngIf="userRequisition">
+        <div class="card-header">
+            <span class="float-left"><i class="fas fa-table mr-1"></i>
+                My Requisition</span>
+            <span class="float-right">
+                <div class="btn-group">
+
+                    <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-bars"> </i></button>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+
+                        <button class="dropdown-item" type="button" (click)="showPopUpModal('resumeUpload')"
+                            data-toggle="modal" data-target="#popUpModal"> <i class="fas fa-upload">
+                            </i> Upload</button>
+
+                        <button class="dropdown-item" (click)="showModalAddreq()" data-toggle="modal"
+                            data-target="#popUpModal"> <i class="fas fa-plus"></i> Add Req.</button>
+
+
+                        <button class="dropdown-item" (click)="addUserSelf()" data-toggle="modal"
+                            data-target="#popUpModal"> <i class="fas fa-user-plus"></i> Add Users</button>
+
+                        <!--<button class="dropdown-item" type="button" data-toggle="modal" data-target="#popUpModal"
+                                (click)="showPopUpModal('resumeDownload')"> <i class="fas fa-download">
+                                </i> Download</button>-->
+                    </div>
+                </div>
+            </span>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Date</th>
+                            <th>Roles</th>
+                            <th>Skills</th>
+                            <th>Status</th>
+                            <th>Duties</th>
+                            <th *ngIf="authObj.role_id===1"></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let request of userRequisition">
+                            <td>{{request.req_name}}</td>
+                            <td>{{request.req_registerd_date|date}}</td>
+                            <td>{{request.req_roles}}</td>
+                            <td>{{request.req_skills}}</td>
+                            <td>{{request.req_status}}</td>
+                            <td>{{request.req_duties}}</td>
+                            <td *ngIf="authObj.role_id===1"><button class="btn btn-primary" title="Assign"
+                                    data-toggle="modal" data-target="#popUpModal"
+                                    (click)="assignRequisition(request.req_id)"><i
+                                        class="fas fa-paper-plane-o"></i></button></td>
+
+                            <td><button class="btn btn-primary" title="Search" data-toggle="modal"
+                                    data-target="#popUpModal" (click)="searchResume(request.req_id)"> <i
+                                        class="fas fa-search"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="popUpModal" #popUpModal tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-modal [contentName]="modalName"></app-modal>
+            </div>
+        </div>
+    </div>
+</div>

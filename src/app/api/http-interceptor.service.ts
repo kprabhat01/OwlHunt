@@ -1,8 +1,10 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Observable } from 'rxjs';
-import { finalize } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, finalize } from 'rxjs/operators';
+import { LocalstorageService } from '../services/localstorage.service';
 import { NotificationService } from '../services/notification.service';
 
 @Injectable({
@@ -10,12 +12,48 @@ import { NotificationService } from '../services/notification.service';
 })
 export class HttpInterceptorService implements HttpInterceptor {
 
-  constructor(private notifications: NotificationService, private spinner: NgxSpinnerService) { }
+  constructor(
+    private notifications: NotificationService,
+    private spinner: NgxSpinnerService,
+    private local: LocalstorageService,
+    private route: Router) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
+    const token = JSON.parse(this.local.getData('userProperties'))?.accessToken;
     this.spinner.show();
-    const AuthRequest = request.clone();
-    return next.handle(AuthRequest).pipe(finalize(() => this.spinner.hide()));
+    let clone: HttpRequest<any>;
+
+    if (token) {
+
+      clone = request.clone({
+        setHeaders: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + token
+        }
+
+      });
+    } else {
+      clone = request.clone({
+        setHeaders: {
+          Accept: `application/json`,
+          'Content-Type': `application/json`
+        }
+      });
+
+    }
+
+    // const AuthRequest = request.clone();
+    return next.handle(clone).pipe(
+      catchError(err => {
+        if (err.status === 401) {
+          this.local.clearStorage();
+          this.route.navigate(['/login']);
+        }
+        return throwError(err);
+      }),
+      finalize(() => this.spinner.hide())
+    );
   }
 }
