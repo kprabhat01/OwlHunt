@@ -18,12 +18,8 @@
             <input type="text" class="form-control" formControlName="req_duties">
         </div>
         <div class="form-group">
-            Min-Exp. <label class="text-danger">*</label>
-            <input type="number" class="form-control" formControlName="req_max_exp">
-        </div>
-        <div class="form-group">
-            Max-Exp. <label class="text-danger">*</label>
-            <input type="number" class="form-control" formControlName="req_min_exp">
+            Experience Range. <label class="text-danger">*</label>
+            <ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="options"></ngx-slider>
         </div>
         <div class="form-group">
             Skills <label class="text-danger">*</label>

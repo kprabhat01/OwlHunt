@@ -1,3 +1,4 @@
+import { Options } from '@angular-slider/ngx-slider/options';
 import { ThrowStmt } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -16,6 +17,12 @@ export class ResumeFileComponent implements OnInit {
   resumeUpload: FormGroup;
   resumeFormDetails = new FormData();
 
+  value: number = 0;
+  options: Options = {
+    floor: 0,
+    ceil: 60
+  };
+
   constructor(private formGroup: FormBuilder, private resume: ResumeServiceService, private local: LocalstorageService) { }
 
   ngOnInit(): void {
@@ -25,8 +32,10 @@ export class ResumeFileComponent implements OnInit {
       file: ['', Validators.required],
       user_id: ['']
     });
+
+    this.pathResumeExperience();
   }
-  uploadFile(event) { 
+  uploadFile(event) {
     const resumeFile = (event.target as HTMLInputElement).files[0];
     this.resumeUpload.patchValue({
       file: resumeFile
@@ -35,14 +44,23 @@ export class ResumeFileComponent implements OnInit {
   }
 
   onFileUploadSubmit() {
+
+    this.pathResumeExperience();
+
     if (this.resumeUpload.valid) {
 
       let authResponse: authenticationResponse = JSON.parse(this.local.getData('userProperties'));
       this.resumeFormDetails.append('user_id', authResponse.user_id.toString());
       this.resumeFormDetails.append('resume_name', this.resumeUpload.get('resume_name').value);
-      this.resumeFormDetails.append('resume_exp', this.resumeUpload.get('resume_exp').value);       
+      this.resumeFormDetails.append('resume_exp', this.resumeUpload.get('resume_exp').value);
       this.resume.uploadResume(this.resumeFormDetails);
     }
+  }
+
+  pathResumeExperience() {
+    this.resumeUpload.patchValue({
+      resume_exp: this.value
+    });
   }
 
 }
