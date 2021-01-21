@@ -1,42 +1,53 @@
-<div class="form-row align-items-center">
-    <div *ngIf="!showDownload" class="form-group">
-        <form [formGroup]="resumeUpload" (ngSubmit)="onFileUploadSubmit()">
-            <div class="col-auto">
-                <div>Candidate Name<label class="text-danger">*</label> </div>
-                <input type="text" class="form-control float-right input-sm" id="inlineFormInputGroup"
-                    formControlName="resume_name" maxlength="50">
+<div class="container-fluid">
+    <h3 class="mt-4">Upload Resume</h3>
+    <ol class="breadcrumb mb-4">
+        <!-- <li class="breadcrumb-item active">Dashboard</li>-->
+    </ol>
 
-                <div>Experiance <label class="text-danger">*</label></div>
-                <input type="number" class="form-control float-right  input-sm" id="inlineFormInputGroup"
-                    formControlName="resume_exp">
-
-                <div>Resume Upload <label class="text-danger">*</label></div>
-                <input type="file" class="form-control float-right  input-sm" id="inlineFormInputGroup"
-                    (change)="uploadFile($event)">
-
-            </div>
-
-            <br /> <br />
-            <button type="submit" class="btn btn-primary btn-sm float-right"
-                [disabled]="!this.resumeUpload.valid">Submit</button>
-
-        </form>
-    </div>
-
-    <div *ngIf="showDownload">
-        <form (ngSubmit)="onSubmitDownload()">
-            <div class="col-auto">
-                <label class="sr-only" for="inlineFormInputGroup">Select file</label>
-                <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">Resume Download</div>
-                    </div>
-                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+    <div class="">
+        <div *ngIf="!showDownload">
+            <form [formGroup]="resumeUpload" (ngSubmit)="onFileUploadSubmit()">
+                <div class="form-group">
+                     Candidate Name<label class="text-danger">*</label>
+                    <input type="text" class="form-control"  
+                        formControlName="resume_name" maxlength="50">
                 </div>
-            </div>
-            <div class="col-auto d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary mb-2">Submit</button>
-            </div>
-        </form>
+
+                <div class="form-group">
+                    Experiance <label class="text-danger">*</label> 
+                    <input type="number" class="form-control"  
+                        formControlName="resume_exp">
+                </div>
+
+                <div class="form-group">
+                     Resume Upload <label class="text-danger">*</label> 
+                    <input type="file" class="form-control" 
+                        (change)="uploadFile($event)">
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary"
+                        [disabled]="!this.resumeUpload.valid">Submit</button>
+                </div>
+
+            </form>
+        </div>
+
+        <div *ngIf="showDownload">
+            <form (ngSubmit)="onSubmitDownload()">
+                <div class="col-auto">
+                    <label class="sr-only" for="inlineFormInputGroup">Select file</label>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">Resume Download</div>
+                        </div>
+                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+                    </div>
+                </div>
+                <div class="col-auto d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>

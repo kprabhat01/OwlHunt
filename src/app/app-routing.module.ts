@@ -1,16 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AddRequisitionComponent } from './add-requisition/add-requisition.component';
+import { AddUserSelfComponent } from './add-user-self/add-user-self.component';
 import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './guard/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { ResumeFileComponent } from './resume-file/resume-file.component';
 import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   {
     path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard], children: [
       { path: "dashboardHome", component: DashboardHomeComponent },
+      { path: "addReq", component: AddRequisitionComponent },
+      { path: "uploadReq", component: ResumeFileComponent },
+      { path: "addUser", component: AddUserSelfComponent },
       { path: "", component: DashboardHomeComponent },
       { path: "**", component: DashboardHomeComponent }
     ]

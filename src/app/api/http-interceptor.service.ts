@@ -19,17 +19,22 @@ export class HttpInterceptorService implements HttpInterceptor {
     private route: Router) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
+debugger;
     const token = JSON.parse(this.local.getData('userProperties'))?.accessToken;
     this.spinner.show();
     let clone: HttpRequest<any>;
+    //let contentType = 'application/json';
+
+    if (request.body instanceof FormData) {
+      //contentType = 'multipart/form-data';
+    }
+
 
     if (token) {
 
       clone = request.clone({
         setHeaders: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: 'application/json',          
           Authorization: 'Bearer ' + token
         }
 

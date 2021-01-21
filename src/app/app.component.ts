@@ -16,7 +16,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.route.events.subscribe(p => {
-      if (this.location.path() === "/dashboard") {
+      debugger;
+      if (this.location.path().includes('/dashboard')) {
         this.showHeardFooterComponents = false;
       }
       else {

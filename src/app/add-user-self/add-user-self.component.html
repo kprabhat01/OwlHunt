@@ -1,21 +1,27 @@
-<form [formGroup]="addUser" (ngSubmit)="submitNewUser()">
-    <div class="form-group">
-        First name <label class="text-danger">*</label>
-        <input type="text" class="form-control" formControlName="first_name">
-    </div>
-    <div class="form-group">
-        Last name <label class="text-danger">*</label>
-        <input type="text" class="form-control" formControlName="last_name">
-    </div>
-    <div class="form-group">
-        Email <label class="text-danger">*</label>
-        <input type="email" class="form-control" formControlName="email">
-    </div>
-    <div class="form-group">
-        Password <label class="text-danger">*</label>
-        <input type="password" class="form-control" formControlName="passwrd">
-    </div>
-    <div class="form-group">
-        <button class="btn btn-primary btn-sm" type="submit" [disabled]="!this.addUser.valid">Submit</button>
-    </div>
-</form>
+<div class="container-fluid">
+    <h3 class="mt-4">Add User</h3>
+    <ol class="breadcrumb mb-4">
+        <!-- <li class="breadcrumb-item active">Dashboard</li>-->
+    </ol>
+    <form [formGroup]="addUser" (ngSubmit)="submitNewUser()">
+        <div class="form-group">
+            First name <label class="text-danger">*</label>
+            <input type="text" class="form-control" formControlName="first_name">
+        </div>
+        <div class="form-group">
+            Last name <label class="text-danger">*</label>
+            <input type="text" class="form-control" formControlName="last_name">
+        </div>
+        <div class="form-group">
+            Email <label class="text-danger">*</label>
+            <input type="email" class="form-control" formControlName="email">
+        </div>
+        <div class="form-group">
+            Password <label class="text-danger">*</label>
+            <input type="password" class="form-control" formControlName="passwrd">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit" [disabled]="!this.addUser.valid">Submit</button>
+        </div>
+    </form>
+</div>

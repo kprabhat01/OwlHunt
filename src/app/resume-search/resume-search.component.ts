@@ -12,7 +12,7 @@ export class ResumeSearchComponent implements OnChanges {
 
   @Input() resumeSearchDetails: any;
   noInput: boolean = false;
-  resumeResult: resumeSearch;
+  resumeResult: resumeSearch = null;
 
   constructor(private resume: ResumeServiceService, private notification: NotificationService) { }
 
@@ -25,6 +25,7 @@ export class ResumeSearchComponent implements OnChanges {
         if (err.status == 404) {
           this.notification.showError(err.statusText);
           this.noInput = false;
+          this.resumeResult = null;
         }
       });
   }
