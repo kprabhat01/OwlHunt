@@ -8,14 +8,24 @@
         <div class="form-group">
             Name <label class="text-danger">*</label>
             <input type="text" class="form-control" formControlName="Req_name">
+            <div class="text text-danger" *ngIf="reqForm.get('Req_name').touched && reqForm.get('Req_name').invalid">
+                <small>Please enter Req. name.</small>
+            </div>
         </div>
         <div class="form-group">
             Roles <label class="text-danger">*</label>
             <textarea class="form-control" formControlName="Req_roles"></textarea>
+            <div class="text text-danger" *ngIf="reqForm.get('Req_roles').touched && reqForm.get('Req_roles').invalid">
+                <small>Please enter roles.</small>
+            </div>
         </div>
         <div class="form-group">
             Duties <label class="text-danger">*</label>
             <textarea class="form-control" formControlName="req_duties"></textarea>
+            <div class="text text-danger"
+                *ngIf="reqForm.get('req_duties').touched && reqForm.get('req_duties').invalid">
+                <small>Please enter duties.</small>
+            </div>
         </div>
         <div class="form-group">
             Experience Range. <label class="text-danger">*</label>
@@ -24,6 +34,10 @@
         <div class="form-group">
             Skills <label class="text-danger">*</label>
             <textarea class="form-control" formControlName="req_skills"></textarea>
+            <div class="text text-danger"
+                *ngIf="reqForm.get('req_skills').touched && reqForm.get('req_skills').invalid">
+                <small>Please enter required skills.</small>
+            </div>
         </div>
 
         <div class="form-group">

@@ -13,23 +13,34 @@
                     <div class="card-header bg-info text-white text-center">
                         Member Login
                     </div>
-                    <div class="card-body text-right">
+                    <div class="card-body">
                         <form [formGroup]="authForms" (ngSubmit)="onSubmit()">
                             <div class="form-group">
                                 <input type="email" class="form-control" placeholder="Enter email address"
                                     formControlName="email">
+                                <div *ngIf="authForms.get('email').invalid && authForms.get('email').touched"
+                                    class="text text-danger">
+                                    <small>Email address is not valid.</small>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <input type="password" class="form-control" placeholder="Enter password"
                                     formControlName="passwd">
+                                <div *ngIf="authForms.get('passwd').invalid && authForms.get('passwd').touched"
+                                    class="text text-danger">
+                                    <small>Please enter password.</small>
+                                </div>
                             </div>
-
-                            <button type="submit" class="btn btn-primary"
-                                [disabled]="!this.authForms.valid">SignIn</button>
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-primary"
+                                    [disabled]="!this.authForms.valid">SignIn</button> <br />
+                                <button type="button" class="btn btn-link" [routerLink]="['/resetAuth']">Forget
+                                    Password</button>
+                            </div>
                         </form>
                     </div>
                     <div class="card-footer text-muted">
-                        <button class="btn btn-link" [routerLink]="['/signup']">Register Now </button>                         
+                        <button class="btn btn-link" [routerLink]="['/signup']">Register Now </button>
                     </div>
                 </div>
             </div>

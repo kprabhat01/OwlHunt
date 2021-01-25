@@ -17,12 +17,12 @@ export class AddUserSelfComponent implements OnInit {
     this.addUser = this.formBuilder.group({
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
-      email: ['', Validators.email],
+      email: ['', [Validators.email, Validators.required]],
       passwrd: ['', Validators.required]
     })
   }
 
-  submitNewUser() { 
+  submitNewUser() {
     if (this.addUser.valid) {
       this.authService.addUserSelf(this.addUser.value);
     }

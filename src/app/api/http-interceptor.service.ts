@@ -18,7 +18,7 @@ export class HttpInterceptorService implements HttpInterceptor {
     private local: LocalstorageService,
     private route: Router) { }
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> { 
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = JSON.parse(this.local.getData('userProperties'))?.accessToken;
     this.spinner.show();
     let clone: HttpRequest<any>;
@@ -33,7 +33,7 @@ export class HttpInterceptorService implements HttpInterceptor {
 
       clone = request.clone({
         setHeaders: {
-          Accept: 'application/json',          
+          Accept: 'application/json',
           Authorization: 'Bearer ' + token
         }
 
@@ -42,7 +42,7 @@ export class HttpInterceptorService implements HttpInterceptor {
       clone = request.clone({
         setHeaders: {
           Accept: `application/json`,
-          'Content-Type': `application/json`
+          'Content-Type': 'application/json'
         }
       });
 

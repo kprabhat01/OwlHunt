@@ -1,0 +1,54 @@
+<main id="main">
+
+
+    <section id="clients" class="section-bg">
+
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-header top-margin">
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <div class="card" style="width:400px">
+                    <div class="card-header bg-info text-white text-center">
+                        Reset Password
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-danger" *ngIf="!showResetPassword"> Invalid token !!
+                        </div>
+                        <form [formGroup]="authForms" (ngSubmit)="onSubmit()" *ngIf="showResetPassword">
+                            <div class="form-group">
+                                <span class="text text-success"> Hello <b><i>{{userName}}</i></b> !! good to see you.,
+                                </span>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Enter password"
+                                    formControlName="password">
+                                <div class="text text-danger"
+                                    *ngIf="authForms.get('password').touched && authForms.get('password').invalid">
+                                    <small>Please enter password.</small>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Confirm password"
+                                    formControlName="confirmPassword" (blur)="onConfirmPasswordEntered()">
+                                <div class="text text-danger"
+                                    *ngIf="authForms.get('confirmPassword').touched && authForms.get('confirmPassword').invalid && authForms.get('confirmPassword').value ==''">
+                                    <small>Please enter confirm Password.</small>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-primary"
+                                    [disabled]="!this.authForms.valid">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer text-muted">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</main>

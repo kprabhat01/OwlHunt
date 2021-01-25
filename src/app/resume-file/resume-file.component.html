@@ -8,9 +8,12 @@
         <div *ngIf="!showDownload">
             <form [formGroup]="resumeUpload" (ngSubmit)="onFileUploadSubmit()">
                 <div class="form-group">
-                     Candidate Name<label class="text-danger">*</label>
-                    <input type="text" class="form-control"  
-                        formControlName="resume_name" maxlength="50">
+                    Candidate Name<label class="text-danger">*</label>
+                    <input type="text" class="form-control" formControlName="resume_name" maxlength="50">
+                    <div class="text text-danger"
+                        *ngIf="resumeUpload.get('resume_name').touched && resumeUpload.get('resume_name').invalid">
+                        <small>Please enter resume name.</small>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -19,14 +22,16 @@
                 </div>
 
                 <div class="form-group">
-                     Resume Upload <label class="text-danger">*</label> 
-                    <input type="file" class="form-control" 
-                        (change)="uploadFile($event)">
+                    Resume Upload <label class="text-danger">*</label>
+                    <input type="file" class="form-control" (change)="uploadFile($event)">
+                    <div class="text text-danger"
+                        *ngIf="resumeUpload.get('file').touched && resumeUpload.get('file').invalid">
+                        <small>Please select the resume.</small>
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary"
-                        [disabled]="!this.resumeUpload.valid">Submit</button>
+                    <button type="submit" class="btn btn-primary" [disabled]="!this.resumeUpload.valid">Submit</button>
                 </div>
 
             </form>

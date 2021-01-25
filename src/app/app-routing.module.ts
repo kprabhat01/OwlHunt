@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AddRequisitionComponent } from './add-requisition/add-requisition.component';
 import { AddUserSelfComponent } from './add-user-self/add-user-self.component';
+import { ResetAuthComponent } from './auth-reset/reset-auth/reset-auth.component';
+import { ResetPassComponent } from './auth-reset/reset-pass/reset-pass.component';
 import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './guard/auth.guard';
@@ -23,6 +25,8 @@ const routes: Routes = [
   },
   { path: "login", component: LoginComponent },
   { path: "signup", component: SignupComponent },
+  { path: "resetAuth", component: ResetAuthComponent },
+  { path: "verifyToken/:token", component: ResetPassComponent },
   { path: "", component: HomeComponent },
   { path: "**", component: HomeComponent }
 ];

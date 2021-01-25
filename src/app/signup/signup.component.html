@@ -19,38 +19,71 @@
                                 <label>First Name</label> <label class="text-danger">*</label>
                                 <input type="text" class="form-control" placeholder="First name"
                                     formControlName="first_name">
+                                <div class="text text-danger"
+                                    *ngIf="signUpForm.get('first_name').touched && signUpForm.get('first_name').invalid">
+                                    <small>Please enter first name.</small>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Last Name</label><label class="text-danger">*</label>
                                 <input type="text" class="form-control" placeholder="Last name"
                                     formControlName="last_name">
+                                <div class="text text-danger"
+                                    *ngIf="signUpForm.get('last_name').touched && signUpForm.get('last_name').invalid">
+                                    <small> Please enter last name. </small>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Email</label><label class="text-danger">*</label>
                                 <input type="email" class="form-control" placeholder="Email" formControlName="email">
+                                <div class="text text-danger"
+                                    *ngIf="signUpForm.get('email').touched && signUpForm.get('email').invalid">
+                                    <small> Please enter valid email address. </small>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Company Name</label><label class="text-danger">*</label>
                                 <input type="text" class="form-control" placeholder="Company name"
                                     formControlName="comp_name">
+                                <div class="text text-danger"
+                                    *ngIf="signUpForm.get('comp_name').touched && signUpForm.get('comp_name').invalid">
+                                    <small> Please enter company name. </small>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Country</label><label class="text-danger">*</label>
                                 <app-country (selectedCountryCode)=onSelectOfCountry($event)></app-country>
+                                <div class="text text-danger"
+                                    *ngIf="signUpForm.get('comp_country').touched && signUpForm.get('comp_country').invalid">
+                                    <small> Please select country. </small>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Company Type</label><label class="text-danger">*</label>
                                 <app-company (selectedCompanyType)=onSelectedCompanyType($event)></app-company>
+                                <div class="text text-danger"
+                                    *ngIf="signUpForm.get('comp_type').touched && signUpForm.get('comp_type').invalid">
+                                    <small> Please select company type. </small>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Password</label><label class="text-danger">*</label>
                                 <input type="password" class="form-control" placeholder="Enter password"
                                     formControlName="passwrd">
+                                <div class="text text-danger"
+                                    *ngIf="signUpForm.get('passwrd').touched && signUpForm.get('passwrd').invalid">
+                                    <small> Please enter password. </small>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Re-Password</label><label class="text-danger">*</label>
                                 <input type="password" class="form-control" placeholder="Enter confirm password"
                                     formControlName="confpasswrd" (blur)="onConfirmPasswordEntered()">
+                                <div class="text text-danger"
+                                    *ngIf="signUpForm.get('confpasswrd').touched && signUpForm.get('confpasswrd').invalid">
+                                    <small *ngIf="signUpForm.get('confpasswrd').value ==''">
+                                        Please enter confirm password. </small>
+                                </div>
                             </div>
 
                             <button type="submit" class="btn btn-primary" [disabled]="!signUpForm.valid">Submit</button>

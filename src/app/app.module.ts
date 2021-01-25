@@ -6,8 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { NgxSpinnerModule } from "ngx-spinner";
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
-
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
@@ -25,6 +25,9 @@ import { ResumeSearchComponent } from './resume-search/resume-search.component';
 import { AddRequisitionComponent } from './add-requisition/add-requisition.component';
 import { AssignRequisitionComponent } from './assign-requisition/assign-requisition.component';
 import { AddUserSelfComponent } from './add-user-self/add-user-self.component';
+import { ResetAuthComponent } from './auth-reset/reset-auth/reset-auth.component';
+import { ResetPassComponent } from './auth-reset/reset-pass/reset-pass.component';
+
 
 @NgModule({
   declarations: [
@@ -43,7 +46,9 @@ import { AddUserSelfComponent } from './add-user-self/add-user-self.component';
     ResumeSearchComponent,
     AddRequisitionComponent,
     AssignRequisitionComponent,
-    AddUserSelfComponent
+    AddUserSelfComponent,
+    ResetAuthComponent,
+    ResetPassComponent
   ],
   imports: [
     BrowserModule,

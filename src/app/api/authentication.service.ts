@@ -59,4 +59,27 @@ export class AuthenticationService {
     })
   }
 
+  sendPasswordLink(obj: any) {
+    this.httpRequest.post('reset_password', obj).subscribe(p => {
+      if (p) {
+        this.notification.showSuccess('An email has been sent to your email address');
+      }
+    }, err => {
+      this.notification.showError('Error while sending request');
+    })
+  }
+
+  checkTokenForRestPassword<T>(token: string): Observable<T> {
+    return this.httpRequest.get<T>('verify_token/' + token);
+  }
+
+  resetPassword(obj: any) {
+    this.httpRequest.post('verify_password', obj).subscribe(p => {
+      if (p) {
+        this.notification.showSuccess('Password has been changed successfull');
+      }
+    }, err => this.notification.showError('Error while changing password'));
+  }
+
+
 }

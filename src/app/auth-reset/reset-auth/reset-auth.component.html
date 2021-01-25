@@ -1,0 +1,41 @@
+<main id="main">
+
+
+    <section id="clients" class="section-bg">
+
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-header top-margin">
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <div class="card" style="width:400px">
+                    <div class="card-header bg-info text-white text-center">
+                        Reset Password
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="authForms" (ngSubmit)="onSubmit()">
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Enter registered email address"
+                                    formControlName="email">
+                                <div class="text text-danger"
+                                    *ngIf="authForms.get('email').touched && authForms.get('email').invalid">
+                                    <small>Please enter valid email address.</small>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-primary" [disabled]="!this.authForms.valid">Send
+                                    Reset
+                                    Link</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <button class="btn btn-link" [routerLink]="['/login']">Back to login </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</main>
